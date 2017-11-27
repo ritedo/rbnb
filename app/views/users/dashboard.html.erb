@@ -1,2 +1,49 @@
-<h1>Users#dashboard</h1>
-<p>Find me in app/views/users/dashboard.html.erb</p>
+
+<div class="container">
+  <h1>Hello <%= @user.first_name %>,</h1>
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <div class="tabs">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Mes vélos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mes reservations</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- body of each tab -->
+<div class="tab-content col-sm-offset-4 col-sm-4" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <% @bikes.each do |bike| %>
+      <div class="my-bike-card">
+        <%= image_tag bike.photo.url(:bright_face), {class: "photo-tabs"} %>
+        <div class="title-card">
+          <p><%= bike.title %></p>
+        </div>
+        <div class="price-card">
+          <p><%= bike.price_per_day %> €/day</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <% @reservations.each do |reservation| %>
+      <div class="my-bike-card">
+        <%= image_tag reservation.bike.photo.url(:bright_face) %>
+        <div class="title-card">
+          <p><%= reservation.bike[:title] %></p>
+        </div>
+        <div class="price-card">
+          <p><%= reservation.bike[:price_per_day] %> €/day</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
