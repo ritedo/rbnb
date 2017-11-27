@@ -1,0 +1,23 @@
+.my-bike-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.photo-tabs {
+  height: 60px;
+}
+
+.title-card {
+  padding-left: 10px;
+  min-width: 100px;
+}
+.price-card {
+  color: gray;
+}
