@@ -1,49 +1,60 @@
 
-<div class="container">
-  <h1>Hello <%= @user.first_name %>,</h1>
-  <div class="row">
-    <div class="col-sm-offset-4 col-sm-4">
-      <div class="tabs">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Mes vélos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mes reservations</a>
-          </li>
-        </ul>
-      </div>
+<div class="container-dashboard">
+  <div class ="profil-dashboard">
+    <h1>Hello <%= @user.first_name %>,</h1>
+    <div class="activities">
+      <% if @user.avatar %>
+        <%= cl_image_tag("donatien.png", class:"avatar-medium") %>
+      <% else %>
+        <%= link_to "Add a picture", root_path, class:"avatar-medium" %>
+      <% end %>
+      <p> <%= @reservations.count %>/<%= @bikes.count %> bikes are booked</p>
+      <p>You are currently renting <%= @reservations_user.count %></p>
     </div>
   </div>
-</div>
-
-<!-- body of each tab -->
-<div class="tab-content col-sm-offset-4 col-sm-4" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    <% @bikes.each do |bike| %>
-      <div class="my-bike-card">
-        <%= image_tag bike.photo.url(:bright_face), {class: "photo-tabs"} %>
-        <div class="title-card">
-          <p><%= bike.title %></p>
-        </div>
-        <div class="price-card">
-          <p><%= bike.price_per_day %> €/day</p>
-        </div>
+  <div class="full-tabs">
+    <div class="tabs">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My bikes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Booking</a>
+        </li>
+      </ul>
+    </div>
+    <div id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <% @reservations.each do |reservation| %>
+          <div class="my-bike-card">
+            <%= image_tag reservation.bike.photo.url(:bright_face), class: "photo-tabs" %>
+            <div class="title-card">
+              <p><%= reservation.bike.title %></p>
+            </div>
+            <div class="price-card">
+              <p><%= reservation.bike.price_per_day %> €/day</p>
+            </div>
+            <div class="date-card">
+              <p><%= reservation.starts_at.strftime("%F") %></p>
+              <p><%= reservation.ends_at.strftime("%F") %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <% @reservations.each do |reservation| %>
-      <div class="my-bike-card">
-        <%= image_tag reservation.bike.photo.url(:bright_face) %>
-        <div class="title-card">
-          <p><%= reservation.bike[:title] %></p>
-        </div>
-        <div class="price-card">
-          <p><%= reservation.bike[:price_per_day] %> €/day</p>
-        </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <% @reservations_user.each do |reservation_user| %>
+          <div class="my-bike-card">
+            <%= image_tag reservation_user.bike.photo.url(:bright_face) %>
+            <div class="title-card">
+              <p><%= reservation_user.bike[:title] %></p>
+            </div>
+            <div class="price-card">
+              <p><%= reservation_user.bike[:price_per_day] %> €/day</p>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
