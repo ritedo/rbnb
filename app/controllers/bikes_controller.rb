@@ -2,9 +2,9 @@ class BikesController < ApplicationController
   before_action :set_bike, only: :show
   def index
     if search_params['address'] == ""
-      @bikes = Bike.all
-    else
       @bikes = Bike.where(address: search_params['address'])
+    else
+      @bikes = Bike.all
     end
   end
 
