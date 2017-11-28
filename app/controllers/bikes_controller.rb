@@ -9,7 +9,7 @@ class BikesController < ApplicationController
   end
 
   def search
-    @bikes = Bikes.where(params[:address])
+    @bikes = Bike.where(params[:address])
     redirect_to bikes_path
   end
 
@@ -24,8 +24,27 @@ class BikesController < ApplicationController
   def create
     @bike = Bike.new(bike_params)
     @bike.user = current_user
-    @bike.save
-    redirect_to bikes_path
+    if @bike.save
+      redirect_to mybikes_bikes_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to mybikes_bikes_path
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def mybikes
+    @bikes = Bike.where(user: current_user)
   end
 
   private
