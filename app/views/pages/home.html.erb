@@ -1,16 +1,17 @@
 <div class="main-container">
   <div class="row">
-    <div class="background" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+    <div class="image-banner">
       <div class="banner">
         <div class="banner-content">
-          <h1>Peer-to-peer bike charters</h1>
-          <h2>More than 13,600 privately-owned bikes to charter in the world</h2>
+          <h1 class="homepage">Peer-to-peer bike charters</h1>
+          <h2 class="homepage">More than 13,600 privately-owned bikes to charter in the world</h2>
         </div>
-        <div class="form-group">
-          <form>
-            <input class="form-control form-control-lg" type="text" placeholder="Where do you want to pick your bike?">
-          </form>
-        </div>
+        <form action="/bikes" class="form-stuff">
+          <div class="form-group">
+            <input name="address" class="form-control input-lg" type="text" placeholder="Enter the address where you want to pickup your bike">
+            <input type="submit" class="btn btn-primary btn-lg">Let's go!</input>
+          </div>
+        </form>
       </div>
     </div>
   </div>

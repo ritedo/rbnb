@@ -3,16 +3,26 @@ h1 {
   font-size: 55px;
   font-weight: 600;
 }
+h1.homepage {
+  color: white;
+  font-size: 55px;
+  font-weight: 600;
+}
 h2 {
+  color: rgb(40, 40, 40);
+  font-size: 30px;
+  font-weight: 300;
+}
+h2.homepage {
   color: #fff;
   font-size: 30px;
   font-weight: 300;
 }
 .banner-content {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
-.background {
+.image-banner {
   display: flex;
   width: 100%;
   height: calc(100vh - 70px);
@@ -20,12 +30,24 @@ h2 {
   background-position: center;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),url(/assets/background.jpg);
+}
+.form-group {
+  display: flex;
+  width: auto;
+  align-items: center;
 }
 .form-control {
-  border-top: 30px;
-  height: 55px;
   border-radius: 4px;
+  height: 60px;
+  width: 100%;
 }
-.placeholder {
-  font-size: 22px;
+.btn {
+  border-radius : 4px;
+  height: 60px;
+  width: 120px;
 }
+input::placeholder {
+  font-size: 20px;
+}
+
