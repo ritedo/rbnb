@@ -30,6 +30,7 @@ class BikesController < ApplicationController
     else
       render :new
     end
+    authorize @bike
   end
 
   def destroy
@@ -47,7 +48,6 @@ class BikesController < ApplicationController
 
   def mybikes
     @bikes = Bike.where(user: current_user)
-    authorize @bikes
   end
 
   private
