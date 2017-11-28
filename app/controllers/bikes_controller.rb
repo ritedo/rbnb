@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: :show
+  before_action :set_bike, only: [:show, :edit, :update, :destroy]
   def index
     if search_params['address'] == ""
       @bikes = Bike.where(address: search_params['address'])
@@ -32,7 +32,6 @@ class BikesController < ApplicationController
   end
 
   def destroy
-    @bike = Bike.find(params[:id])
     @bike.destroy
     redirect_to mybikes_bikes_path
   end
@@ -41,6 +40,8 @@ class BikesController < ApplicationController
   end
 
   def update
+    @bike.update(bike_params)
+    redirect_to mybikes_bikes_path
   end
 
   def mybikes
