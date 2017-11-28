@@ -47,6 +47,7 @@ class BikesController < ApplicationController
 
   def mybikes
     @bikes = Bike.where(user: current_user)
+    authorize @bikes
   end
 
   private
@@ -61,6 +62,6 @@ class BikesController < ApplicationController
 
   def set_bike
     @bike = Bike.find(params[:id])
-    authorize @restaurant
+    authorize @bike
   end
 end
