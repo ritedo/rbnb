@@ -1,0 +1,30 @@
+.card-shadow {
+  box-shadow: 2px 2px 3px rgba(20, 20, 20, 0.5);
+  height: 220px;
+  padding: 0px;
+  margin: 10px;
+}
+
+.card-with-shadow {
+  margin: 0px;
+}
+.update {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.update h2 {
+  margin: 0px;
+  font-size: 18px;
+}
+.update p{
+  font-size: 14px;
+}
+.card-desc {
+  flex: 1 0 auto;
+}
+.update-delete {
+  flex: 0 0 20%;
+  color: white;
+  margin: 0px;
+}

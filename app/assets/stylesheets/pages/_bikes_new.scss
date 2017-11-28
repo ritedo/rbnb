@@ -1,0 +1,23 @@
+.form {
+  margin-top: 30px;
+}
+.form-group {
+  display: flex;
+}
+.control-label {
+  width: 200px;
+}
+.btn {
+  border-radius : 4px;
+  height: 50px;
+  width: 150px;
+  align-items: center;
+}
+.row {
+  display: flex;
+  width: 100%;
+  padding-top: 50px;
+  height: calc(100vh - 70px);
+  justify-content: center;
+  padding-bottom: 20px;
+}
