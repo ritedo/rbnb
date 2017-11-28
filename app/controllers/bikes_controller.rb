@@ -1,7 +1,16 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: :show
   def index
-    @bikes = Bike.all
+    if search_params['address'] == ""
+      @bikes = Bike.all
+    else
+      @bikes = Bike.where(address: search_params['address'])
+    end
+  end
+
+  def search
+    @bikes = Bikes.where(params[:address])
+    redirect_to bikes_path
   end
 
   def show
@@ -20,6 +29,10 @@ class BikesController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.permit(:address)
+  end
 
   def bike_params
     params.require(:bike).permit(:title, :description, :price_per_day, :address, :photo, :photo_cache)
