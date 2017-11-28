@@ -17,10 +17,6 @@ class BikePolicy < ApplicationPolicy
     is_user_the_owner_or_admin?
   end
 
-  def mybikes?
-    user == record.first.user || user.admin?
-  end
-
   private
 
   def is_user_the_owner_or_admin?
