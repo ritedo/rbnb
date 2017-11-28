@@ -12,47 +12,55 @@
       <p>You are currently renting <%= @reservations_user.count %></p>
     </div>
   </div>
-  <div class="full-tabs">
-    <div class="tabs">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My bikes</a>
+  <div class="action-dashboard">
+    <div class="validation_resquest">
+      <h2> No validation resquest for the moment</h2>
+    </div>
+    <div class="full-tabs">
+      <ul class="nav nav-pills" role="tablist">
+        <li class="active", role="presentation">
+          <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">My bikes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Booking</a>
+        <li role="presentation">
+          <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">Booking</a>
         </li>
       </ul>
-    </div>
-    <div id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <% @reservations.each do |reservation| %>
-          <div class="my-bike-card">
-            <%= image_tag reservation.bike.photo.url(:bright_face), class: "photo-tabs" %>
-            <div class="title-card">
-              <p><%= reservation.bike.title %></p>
+      <div class="tab-content">
+        <div class="tab-pane active" id="mybikes" role="tabpanel" aria-labelledby="pills-home-tab">
+          <% @reservations.each do |reservation| %>
+            <div class="my-bike-card">
+              <%= image_tag reservation.bike.photo.url(:bright_face), class: "photo-tabs" %>
+              <div class="title-card">
+                <p><%= reservation.bike.title %></p>
+              </div>
+              <div class="price-card">
+                <p><%= reservation.bike.price_per_day %> €/day</p>
+              </div>
+              <div class="user-bike-card">
+                <h6>User:</h6>
+                <% user_id = reservation.user_id %>
+                <p><%= User.find(user_id).email %></p>
+              </div>
+              <div class="date-card">
+                <p><%= reservation.starts_at.strftime("%F") %></p>
+                <p><%= reservation.ends_at.strftime("%F") %></p>
+              </div>
             </div>
-            <div class="price-card">
-              <p><%= reservation.bike.price_per_day %> €/day</p>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="booking" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <% @reservations_user.each do |reservation_user| %>
+            <div class="my-bike-card">
+              <%= image_tag reservation_user.bike.photo.url(:bright_face) %>
+              <div class="title-card">
+                <p><%= reservation_user.bike[:title] %></p>
+              </div>
+              <div class="price-card">
+                <p><%= reservation_user.bike[:price_per_day] %> €/day</p>
+              </div>
             </div>
-            <div class="date-card">
-              <p><%= reservation.starts_at.strftime("%F") %></p>
-              <p><%= reservation.ends_at.strftime("%F") %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <% @reservations_user.each do |reservation_user| %>
-          <div class="my-bike-card">
-            <%= image_tag reservation_user.bike.photo.url(:bright_face) %>
-            <div class="title-card">
-              <p><%= reservation_user.bike[:title] %></p>
-            </div>
-            <div class="price-card">
-              <p><%= reservation_user.bike[:price_per_day] %> €/day</p>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
