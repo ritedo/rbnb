@@ -19,6 +19,7 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
@@ -60,5 +61,6 @@ class BikesController < ApplicationController
 
   def set_bike
     @bike = Bike.find(params[:id])
+    authorize @restaurant
   end
 end
