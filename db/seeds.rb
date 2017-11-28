@@ -5,20 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "destroy all bikes and users"
+Bike.destroy_all
+User.destroy_all
 
-donatien = User.find(1)
+puts "creating users"
+donatien = User.create(email: "donatien@hotmail.fr", password: "password")
+victor = User.create(email: "victor@hotmail.fr", password: "password")
+joffrey = User.create(email: "joffrey@hotmail.fr", password: "password")
+david = User.create(email: "david@hotmail.fr", password: "password")
+marguerite = User.create(email: "marguerite@hotmail.fr", password: "password")
 
+puts "creating bikes"
 bike1 = Bike.new(title: "Nice racing bike", description: "Very fast and light", price_per_day: 15, address: "Paris")
 bike2 = Bike.new(title: "Nice bike", description: "Very fast and light", price_per_day: 20, address: "Paris")
-bike3 = Bike.new(title: "Racing bike", description: "Very fast and light", price_per_day: 12, address: "Paris")
-bike4 = Bike.new(title: "Very Nice racing bike", description: "Very fast and light", price_per_day: 25, address: "Paris")
+bike3 = Bike.new(title: "Delivery bike", description: "With a delivery box", price_per_day: 12, address: "Paris")
+bike4 = Bike.new(title: "Racing bike", description: "Very fast and light", price_per_day: 25, address: "Paris")
+bike5 = Bike.new(title: "Very Nice mid-racing bike", description: "Very fast and light", price_per_day: 25, address: "Paris")
 
 bike1.user = donatien
-bike2.user = donatien
-bike3.user = donatien
-bike4.user = donatien
-
-
+bike2.user = victor
+bike3.user = joffrey
+bike4.user = david
+bike5.user = marguerite
 
 bike1.remote_photo_url = "https://www.bricklanebikes.co.uk/content/images/thumbs/0030350_6ku-fixie-single-speed-bike-beach-bum_1200.jpeg"
 bike2.remote_photo_url = "https://www.bricklanebikes.co.uk/content/images/thumbs/0030350_6ku-fixie-single-speed-bike-beach-bum_1200.jpeg"
