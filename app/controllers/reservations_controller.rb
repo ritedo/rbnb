@@ -1,6 +1,5 @@
 class ReservationsController < ApplicationController
   def create
-    raise
     @reservation = Reservation.new(reservation_params)
     @user = current_user
     @reservation.user = @user

@@ -10,7 +10,7 @@
           <h2><%= bike.title %></h2>
           <p><%= bike.description %></p>
         </div>
-        <%= cl_image_tag bike.user.avatar.url, class: "card-user" %>
+        <%= cl_image_tag bike.user.avatar, class: "card-user" %>
         <%= link_to "", bike_path(bike), class: "card-link" %>
         </div>
       </div>
