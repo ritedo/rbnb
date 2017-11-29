@@ -17,6 +17,12 @@ joffrey.remote_avatar_url = "https://avatars0.githubusercontent.com/u/26279782?v
 david.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/lrvp1wxcx2jvymmwq1ap.jpg"
 marguerite.remote_avatar_url = "https://avatars3.githubusercontent.com/u/32311278?v=4"
 
+donatien.save!
+victor.save!
+joffrey.save!
+david.save!
+marguerite.save!
+
 puts "creating bikes"
 bike1 = Bike.new(title: "Nice racing bike", description: "Very fast and light", price_per_day: 15, address: "18 rue rousselet paris")
 bike2 = Bike.new(title: "Nice city bike", description: "Very good sitting, rented with a baby sit. Perfect for an adult with a young child", price_per_day: 20, address: "10 rue de la grand aux belles paris")
