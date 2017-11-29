@@ -10,7 +10,7 @@
   border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: calc(100vh - 450px);
+  height: calc(100vh - 465px);
 }
 
 .photo-tabs {
@@ -32,6 +32,7 @@
 .container-dashboard {
   display: flex;
   align-items: center;
+  font-family: Arial, sans-serif;
 }
 
 .profil-dashboard {
@@ -48,27 +49,45 @@
     text-align: center;
   }
 }
+.activities {
+  font-size: 15px;
+  text-align: center;
+  p {
+    margin-top: 30px;
+  }
+}
 .avatar-medium {
   width: 50px;
   height: 50px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border-radius: 50%;
-  background-color: gray;
+  background-color: #e8e3e3;
 }
 .user-bike-card {
   font-size: 12px;
-  color: gray;
+  h6 {
+    margin-top: 0px;
+  }
 }
 .validation_resquest {
-  height: calc(100vh - 450px);
+  height: calc(100vh - 465px);
   background: white;
-  margin: 15px 0;
+  margin-bottom: 10px;
   border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  h2  {
+    margin-top: 125px;
+    font-size: 15px;
+  }
 }
 .action-dashboard {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  margin-right: 15px;
+}
+#mybikes {
+  padding: 15px;
 }
