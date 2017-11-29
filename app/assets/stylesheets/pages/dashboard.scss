@@ -3,18 +3,20 @@
   grid-template-columns: 300px 1fr;
   grid-template-rows: 200px 1fr;
   margin: 10px;
+  height: calc(100vh - 140px);
 }
 
 .profil-dashboard {
   grid-row: 1 /span 2;
   grid-column: 1 /span 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
   position: sticky;
   top: 0;
+  display: grid;
+  grid-template-rows: 200px 100px 1fr;
+
+
+  align-items: center;
+  text-align: center;
   background: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -36,7 +38,34 @@
     font-size: 15px;
   }
 }
+// left
+.avatar-medium {
+  width: 90px;
+  height: 90px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-radius: 50%;
+}
+.user-info {
+  grid-row: 1 /span 1;
+  p {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: lighter;
+  }
+}
+.activities {
+  grid-row: 2 /span 1;
+  margin-top: 30px;
+}
+.button-dash {
+  grid-row: 3 /span 1;
+}
+.dash-btn {
+  margin: 25px 0;
+  padding: 10px;
+}
 
+// right
 .full-tabs {
   background: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
@@ -53,7 +82,6 @@
   background-color: white;
 }
 
-
 .photo-tabs {
   height: 60px;
 }
@@ -67,12 +95,6 @@
   display: flex;
 }
 
-.avatar-medium {
-  width: 90px;
-  height: 90px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border-radius: 50%;
-}
 .user-bike-card {
   font-size: 12px;
   h6 {
