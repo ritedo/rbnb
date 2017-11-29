@@ -3,19 +3,23 @@
   <div class ="profil-dashboard">
     <h1>Hello <%= @user.first_name %>,</h1>
     <div class="activities">
-      <% if @user.avatar %>
-        <%= cl_image_tag("donatien.png", class:"avatar-medium") %>
-      <% else %>
-        <%= link_to "Add a picture", root_path, class:"avatar-medium" %>
-      <% end %>
+      <%= cl_image_tag @user.avatar.url, class: "avatar-medium" %>
+      <p><%= @user.email %></p>
       <p> <%= @reservations.count %>/<%= @bikes.count %> bikes are booked</p>
       <p>You are currently renting <%= @reservations_user.count %></p>
     </div>
+    <button type="button" class="btn btn-primary">Complete your profile</button>
+    <button type="button" class="btn btn-primary">My bikes</button>
   </div>
+
+  <!-- Partie droite -->
+  <!-- haut -->
   <div class="action-dashboard">
     <div class="validation_resquest">
       <h2> No validation resquest for the moment</h2>
     </div>
+
+    <!-- tabs -->
     <div class="full-tabs">
       <ul class="nav nav-pills" role="tablist">
         <li class="active", role="presentation">
@@ -25,6 +29,8 @@
           <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">Booking</a>
         </li>
       </ul>
+
+    <!-- bas -->
       <div class="tab-content">
         <div class="tab-pane active" id="mybikes" role="tabpanel" aria-labelledby="pills-home-tab">
           <% @reservations.each do |reservation| %>
@@ -51,12 +57,22 @@
         <div class="tab-pane" id="booking" role="tabpanel" aria-labelledby="pills-profile-tab">
           <% @reservations_user.each do |reservation_user| %>
             <div class="my-bike-card">
-              <%= image_tag reservation_user.bike.photo.url(:bright_face) %>
+              <%= image_tag reservation_user.bike.photo.url(:bright_face), class: "photo-tabs" %>
               <div class="title-card">
                 <p><%= reservation_user.bike[:title] %></p>
               </div>
               <div class="price-card">
                 <p><%= reservation_user.bike[:price_per_day] %> €/day</p>
+              </div>
+              <div class="user-bike-card">
+                <h6>Owner:</h6>
+                <% bike_id = reservation_user.bike_id %>
+                <p><% user_id = Bike.find(bike_id).user_id %></p>
+                <p><%= User.find(user_id).email %></p>
+              </div>
+              <div class="date-card">
+                <p><%= reservation_user.starts_at.strftime("%F") %></p>
+                <p><%= reservation_user.ends_at.strftime("%F") %></p>
               </div>
             </div>
           <% end %>
