@@ -7,10 +7,9 @@
 }
 .full-tabs {
   background: white;
-  border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: calc(100vh - 465px);
+  height: 400px;
 }
 
 .photo-tabs {
@@ -20,9 +19,6 @@
 .title-card {
   padding-left: 10px;
   min-width: 100px;
-}
-.price-card {
-  color: gray;
 }
 
 .tabs {
@@ -37,31 +33,26 @@
 
 .profil-dashboard {
   flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   height: calc(100vh - 140px);
   background: white;
-  margin: 30px 0;
-  border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 15px;
   h1 {
     font-size: 20px;
-    text-align: center;
   }
 }
 .activities {
   font-size: 15px;
-  text-align: center;
-  p {
-    margin-top: 30px;
-  }
 }
 .avatar-medium {
   width: 50px;
   height: 50px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border-radius: 50%;
-  background-color: #e8e3e3;
+
 }
 .user-bike-card {
   font-size: 12px;
@@ -70,10 +61,8 @@
   }
 }
 .validation_resquest {
-  height: calc(100vh - 465px);
+  height: 200px;
   background: white;
-  margin-bottom: 10px;
-  border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -86,8 +75,10 @@
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  margin-right: 15px;
 }
 #mybikes {
+  padding: 15px;
+}
+#booking {
   padding: 15px;
 }
