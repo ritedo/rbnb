@@ -1,27 +1,29 @@
 <h1>My bikes</h1>
-<p>Congratulation ! You actually registered <%= @bikes.count %> bike(s) on Click & Bike !</p>
+<p class="my-bikes-p">Congratulation ! You already have <%= @bikes.count %> bike(s) registered on Click & Bike !</p>
 <div class="container">
   <div class="row">
     <% @bikes.each do |bike| %>
-      <div class="col-xs-12 col-sm-4 card-shadow">
-        <div class="card card-with-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path bike.photo, height: 300, width: 400, crop: :fill %>')">
-          <%= link_to "", bike_path(bike), class: "card-link" %>
-        </div>
-        <div class="update">
-          <div class="card-desc">
-            <h2 class="card-title"><%= bike.title %> (<%= bike.price_per_day %> €)</h2>
-            <p><em><%= bike.address %></em> </p>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-shadow-mybikes">
+          <div class="card card-with-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path bike.photo, height: 300, width: 400, crop: :fill %>')">
+            <%= link_to "", bike_path(bike), class: "card-link" %>
           </div>
-          <ul class="list-inline update-delete">
-            <li><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_bike_path(bike)%></li>
-            <li><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, bike_path(bike),
-              method: :delete,
-              data: { confirm: "Are you sure?" }%>
-            </li>
-          </ul>
+          <div class="update">
+            <div class="card-desc">
+              <h2 class="card-title"><%= bike.title %> (<%= bike.price_per_day %> €)</h2>
+              <p><em><%= bike.address %></em> </p>
+            </div>
+            <ul class="list-inline update-delete">
+              <li><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_bike_path(bike)%></li>
+              <li><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, bike_path(bike),
+                method: :delete,
+                data: { confirm: "Are you sure?" }%>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-</div>
 <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add a bike !'.html_safe, new_bike_path, class: "btn" %>
+</div>

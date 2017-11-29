@@ -1,8 +1,11 @@
-.card-shadow {
+.card-shadow-mybikes {
   box-shadow: 2px 2px 3px rgba(20, 20, 20, 0.5);
-  height: 220px;
+  height: 300px;
   padding: 0px;
   margin: 10px;
+}
+.my-bikes-p{
+text-align: center;
 }
 
 .card-with-shadow {
@@ -12,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
 }
 .update h2 {
   margin: 0px;
@@ -19,6 +23,7 @@
 }
 .update p{
   font-size: 14px;
+  margin: 0px;
 }
 .card-desc {
   flex: 1 0 auto;
