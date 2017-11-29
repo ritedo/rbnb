@@ -1,17 +1,15 @@
 <div class="container">
-  <h1>Rent a bike!</h1>
+  <h1 align="center">Rent a bike!</h1>
   <div class="photo-reservation">
     <%= cl_image_tag @bike.photo, height: 300, width: 400, crop: :fill, class: "bike-photo" %>
     <div class="reservation-form">
       <h3><%= @bike.title %></h3>
       <h4>Price per day:</h4>
-      <p>
-      <%= @bike.price_per_day %>€
-      </p>
-      <%= simple_form_for [@bike, @reservation] do |f| %>
-        <%= f.input :starts_at, as: :string, :input_html => { :class => 'date_picker' } %>
-        <%= f.input :ends_at, as: :string, :input_html => { :class => 'date_picker' } %>
-        <%= f.submit "add a reservation!", class: "btn btn-primary" %>
+      <p><%= @bike.price_per_day %>€</p>
+      <%= simple_form_for [@bike, @reservation], method: "get" do |f| %>
+        <%= f.input :starts_at, as: :string, required: false, input_html: { class: "datepicker" } %>
+        <%= f.input :ends_at, as: :string, required: false, input_html: { class: "datepicker" } %>
+        <%= f.submit "Add a reservation!", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
