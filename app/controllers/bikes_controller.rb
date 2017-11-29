@@ -1,10 +1,10 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
   def index
-    if search_params['address'] == ""
-      @bikes = Bike.where(address: search_params['address'])
+    if params[:address] == "" || params[:address] == ""
+      @bikes = Bike.where.not(latitude: nil, longitude: nil)
     else
-      @bikes = Bike.all
+      @bikes = Bike.where.not(latitude: nil, longitude: nil)
     end
     # @bikes = Flat.where.not(latitude: nil, longitude: nil)
 
