@@ -1,8 +1,8 @@
 
 <div class="container-dashboard">
   <div class ="profil-dashboard">
-    <h1>Hello <%= @user.first_name %>,</h1>
     <div class="user-info">
+      <h1>Hello <%= @user.first_name %>,</h1>
       <%= cl_image_tag @user.avatar.url, class: "avatar-medium" %>
       <p><%= @user.email %></p>
     </div>
@@ -10,8 +10,10 @@
       <p> <%= @reservations.count %>/<%= @bikes.count %> bikes are booked</p>
       <p>You are currently renting <%= @reservations_user.count %></p>
     </div>
-    <button type="button" class="btn btn-primary dash-btn">Complete your profile</button>
-    <button type="button" class="btn btn-primary dash-btn">My bikes</button>
+    <div class="button-dash">
+      <button type="button" class="btn btn-primary dash-btn">Complete your profile</button>
+      <button type="button" class="btn btn-primary dash-btn">My bikes</button>
+    </div>
   </div>
 
   <!-- Partie droite -->
@@ -24,7 +26,7 @@
   <div class="full-tabs">
     <ul class="nav nav-pills" role="tablist">
       <li class="active", role="presentation">
-        <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">My bikes</a>
+        <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">My bikes's booking</a>
       </li>
       <li role="presentation">
         <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">Booking</a>
