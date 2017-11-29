@@ -12,5 +12,6 @@ class UsersController < ApplicationController
 
     @reservations_user = @user.reservations
     authorize @user
+
   end
 end
