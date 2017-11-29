@@ -6,6 +6,15 @@ class BikesController < ApplicationController
     else
       @bikes = Bike.all
     end
+    # @bikes = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @bikes.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def search

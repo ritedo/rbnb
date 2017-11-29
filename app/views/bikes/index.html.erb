@@ -1,4 +1,10 @@
 <h1>Choose your bike!</h1>
+<div
+  id="map"
+  style="width: 33%;
+  height: calc(100vh - 70px);"
+  data-markers="<%= @markers.to_json %>"
+></div>
 <div class="container">
   <div class="row">
     <% @bikes.each do |bike| %>
@@ -10,7 +16,7 @@
           <h2><%= bike.title %></h2>
           <p><%= bike.description %></p>
         </div>
-        <%= cl_image_tag bike.user.avatar.url, class: "card-user" %>
+        <%= cl_image_tag bike.user.avatar, class: "card-user" %>
         <%= link_to "", bike_path(bike), class: "card-link" %>
         </div>
       </div>
