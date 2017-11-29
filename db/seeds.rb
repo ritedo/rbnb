@@ -2,6 +2,7 @@ puts "destroy all bikes and users"
 
 Bike.destroy_all
 User.destroy_all
+Reservation.destroy_all
 
 puts "creating users"
 donatien = User.create(email: "donatien@hotmail.fr", password: "password")
@@ -10,6 +11,11 @@ joffrey = User.create(email: "joffrey@hotmail.fr", password: "password")
 david = User.create(email: "david@hotmail.fr", password: "password")
 marguerite = User.create(email: "marguerite@hotmail.fr", password: "password")
 
+donatien.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/fquca4dej4dklpyq1cva.jpg"
+victor.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/e7hbgzamn1jrhuonn7yr.jpg"
+joffrey.remote_avatar_url = "https://avatars0.githubusercontent.com/u/26279782?v=4"
+david.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/lrvp1wxcx2jvymmwq1ap.jpg"
+marguerite.remote_avatar_url = "https://avatars3.githubusercontent.com/u/32311278?v=4"
 
 puts "creating bikes"
 bike1 = Bike.new(title: "Nice racing bike", description: "Very fast and light", price_per_day: 15, address: "18 rue rousselet paris")
