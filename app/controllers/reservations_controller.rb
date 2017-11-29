@@ -1,10 +1,14 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
+  include Pundit
+
   def create
-    raise
     @reservation = Reservation.new(reservation_params)
     @user = current_user
     @reservation.user = @user
-    @reservation.bike = Bike.find(params[:bike][:id])
+    @reservation.bike = Bike.find(params[:bike_id])
+
+    authorize @reservation
     @reservation.save
     redirect_to dashboard_path(@user)
   end
