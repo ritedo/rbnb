@@ -12,15 +12,15 @@
       <!-- Links when logged in -->
       <%= link_to "All bikes", bikes_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Add your bike!", new_bike_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to "/bikes/mybikes" do %>
+                <i class="fa fa-bicycle" aria-hidden="true"></i> <%= t(".mybikes", default: "mybikes") %>
               <% end %>
             </li>
             <li>

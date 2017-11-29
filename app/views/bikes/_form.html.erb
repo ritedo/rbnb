@@ -1,0 +1,9 @@
+<%= simple_form_for @bike do |f| %>
+  <%= f.input :title, placeholder: 'Racing bicycle'%>
+  <%= f.input :description, placeholder: '2yo blue racing bicycle'%>
+  <%= f.input :address, placeholder: '16 villa gaudelet 75011 paris'%>
+  <%= f.input :price_per_day, placeholder: '$16/day'%>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit "submit", class: "btn btn-primary" %>
+<% end %>
