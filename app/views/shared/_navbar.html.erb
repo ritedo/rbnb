@@ -5,7 +5,16 @@
   <!-- Logo-name -->
     <%= image_tag "clickandbike.png" %>
   <% end %>
-
+  <%= form_tag bikes_path, class: "navbar-search", method: :get do %>
+  <div id="search-bar">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= text_field_tag :address,
+    params[:address],
+    class: "form-control input-lg",
+      placeholder: "Find a bike",
+      id: "bike_address" %>
+  </div>
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -46,7 +55,6 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "All bikes", bikes_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li><%= link_to "Add your bike!", new_bike_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-        <li><%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %></li>
       </ul>
     </div>
   </div>
