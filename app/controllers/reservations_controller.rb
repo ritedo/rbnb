@@ -10,15 +10,31 @@ class ReservationsController < ApplicationController
 
     authorize @reservation
     @reservation.save
-    redirect_to dashboard_path(@user)
+    redirect_to dashboard_path
   end
 
   def index
   end
 
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.validated = true
+    authorize @reservation
+    @reservation.save
+    redirect_to dashboard_path
+  end
+
+  def decline
+    @reservation = Reservation.find(params[:id])
+    @reservation.validated = false
+    authorize @reservation
+    @reservation.save
+    redirect_to dashboard_path
+  end
+
   private
 
   def reservation_params
-    params.require(:reservation).permit(:starts_at, :ends_at)
+    params.require(:reservation).permit(:starts_at, :ends_at, :validated)
   end
 end

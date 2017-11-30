@@ -1,20 +1,12 @@
 .container-dashboard {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 200px 1fr;
+  display: flex;
   margin: 10px;
   height: calc(100vh - 140px);
 }
-
+//left
 .profil-dashboard {
-  grid-row: 1 /span 2;
-  grid-column: 1 /span 1;
-  position: sticky;
-  top: 0;
-  display: grid;
-  grid-template-rows: 200px 100px 1fr;
-
-
+  flex: 0 0 200px;
+  padding: 10px;
   align-items: center;
   text-align: center;
   background: white;
@@ -25,20 +17,6 @@
     font-size: 20px;
   }
 }
-
-.validation_resquest {
-  grid-row: 1 /span 1;
-  grid-column: 2 /span 1;
-  background: white;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin-bottom: 10px;
-  h2  {
-    font-size: 15px;
-  }
-}
-// left
 .avatar-medium {
   width: 90px;
   height: 90px;
@@ -56,6 +34,12 @@
 .activities {
   grid-row: 2 /span 1;
   margin-top: 30px;
+  p {
+    margin: 0px;
+  }
+}
+.bikes-activity {
+  margin: 10px 0px;
 }
 .button-dash {
   grid-row: 3 /span 1;
@@ -67,30 +51,61 @@
 
 // right
 .full-tabs {
+  flex: 1 0 auto;
   background: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  grid-row: 2 /span 1;
-  grid-column: 2 /span 1;
+  // grid-row: 2 /span 1;
+  // grid-column: 2 /span 1;
 }
 
 .my-bike-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  justify-content: space-between;
   background-color: white;
+  margin: 20px;
 }
-
+.my-bike-card:last-child {
+  border-bottom: none;
+}
 .photo-tabs {
-  height: 60px;
+  height: 100px;
 }
 
-.title-card {
+.title-card, .card-details {
+  flex-grow: 1;
+  padding: 20px;
+  p {
+    margin: 0px;
+  }
+}
+.status-and-price-card {
   padding-left: 10px;
-  min-width: 100px;
+  font-size: 15px;
+  color: rgba(0,0,0,0.7);
 }
-
+.status-and-price-card p {
+  margin: 6px 0;
+}
+.status-and-price-card strong{
+  color: rgba(0,0,0,0.9);
+  color: rgba(0,0,0,0.9);
+}
+.status {
+  font-size: 18px;
+  font-weight: bold;
+}
+.status.accepted {
+  color: #04A366;
+}
+.status.declined {
+  color: red;
+}
+.status.pending {
+  color: rgb(200, 200, 200);
+}
 .tabs {
   display: flex;
 }
@@ -106,4 +121,10 @@
 }
 #booking {
   padding: 15px;
+}
+#decline-reservation {
+  color: red;
+}
+.action {
+  font-size: 22px;
 }

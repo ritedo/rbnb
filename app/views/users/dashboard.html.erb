@@ -2,34 +2,45 @@
 <div class="container-dashboard">
   <div class ="profil-dashboard">
     <div class="user-info">
-      <h1>Hello <%= @user.first_name %>,</h1>
+      <% unless @user.first_name.nil? %>
+        <h1>Hello <%= @user.first_name %>,</h1>
+      <% end %>
       <%= cl_image_tag @user.avatar.url, class: "avatar-medium" %>
       <p><%= @user.email %></p>
     </div>
     <div class="activities">
-      <p> <%= @reservations.count %>/<%= @bikes.count %> bikes are booked</p>
-      <p>You are currently renting <%= @reservations_user.count %></p>
+      <div class="bikes-activity">
+        <% if @reservations.count > 1 %>
+          <p><%= @reservations.count %> reservations are planned on your bikes</p>
+        <% else %>
+          <p><%= @reservations.count %> reservation is planned on your bikes</p>
+        <% end %>
+        <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">see more</a>
+      </div>
+      <div class="bikes-activity">
+        <% if @reservations_user.count > 1 %>
+          <p>You have booked <%= @reservations_user.count %> reservations on other Clickandbikers !</p>
+        <% else %>
+          <p>You have booked <%= @reservations_user.count %> reservation on other Clickandbikers !</p>
+        <% end %>
+        <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">see more</a>
+      </div>
     </div>
     <div class="button-dash">
-      <button type="button" class="btn btn-primary dash-btn">Complete your profile</button>
+      <!-- <button type="button" class="btn btn-primary dash-btn">Complete your profile</button> -->
       <button type="button" class="btn btn-primary dash-btn">My bikes</button>
     </div>
   </div>
 
   <!-- Partie droite -->
-  <!-- haut -->
-
-  <div class="validation_resquest">
-    <h2> No validation resquest for the moment</h2>
-  </div>
   <!-- tabs -->
   <div class="full-tabs">
     <ul class="nav nav-pills" role="tablist">
       <li class="active", role="presentation">
-        <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">My bikes's booking</a>
+        <a data-toggle="tab" href="#mybikes" role="tab" aria-controls="mybikes">My Bookings as the owner</a>
       </li>
       <li role="presentation">
-        <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">Booking</a>
+        <a data-toggle="tab" href="#booking" role="tab" aria-controls="booking">My bookings as the tenant</a>
       </li>
     </ul>
     <!-- bas -->
@@ -39,19 +50,25 @@
           <div class="my-bike-card">
             <%= image_tag reservation.bike.photo.url(:bright_face), class: "photo-tabs" %>
             <div class="title-card">
-              <p><%= reservation.bike.title %></p>
+              <p><strong><%= reservation.bike.title %></strong></p>
+              <p><%= reservation.bike.address %></p>
             </div>
-            <div class="price-card">
-              <p><%= reservation.bike.price_per_day %> €/day</p>
+            <div class="card-details">
+              <p><%= reservation.user.email %> </p>
+              <p><%= reservation.starts_at.strftime("%F") %> / <%= reservation.ends_at.strftime("%F") %></p>
             </div>
-            <div class="user-bike-card">
-              <h6>User:</h6>
-              <% user_id = reservation.user_id %>
-              <p><%= User.find(user_id).email %></p>
-            </div>
-            <div class="date-card">
-              <p><%= reservation.starts_at.strftime("%F") %></p>
-              <p><%= reservation.ends_at.strftime("%F") %></p>
+            <div class="status-and-price-card">
+              <div class="action">
+                <% if reservation.validated == nil %>
+                  <%= link_to '<i class="fa fa-check" aria-hidden="true"></i>'.html_safe, accept_booking_path(reservation), method: :patch, id: "accept-reservation" %>
+                  <%= link_to '<i class="fa fa-ban" aria-hidden="true"></i>'.html_safe, decline_booking_path(reservation), method: :patch, id: "decline-reservation" %>
+                <% elsif reservation.validated == true %>
+                  <p class="status accepted" >Accepted</p>
+                <% else %>
+                  <p class="status declined" >Declined</p>
+                <% end %>
+              </div>
+              <p><%=  (reservation.ends_at - reservation.starts_at) / 60000 * reservation.bike.price_per_day %> €</p>
             </div>
           </div>
         <% end %>
@@ -61,20 +78,18 @@
           <div class="my-bike-card">
             <%= image_tag reservation_user.bike.photo.url(:bright_face), class: "photo-tabs" %>
             <div class="title-card">
-              <p><%= reservation_user.bike[:title] %></p>
+              <p><strong><%= reservation_user.bike[:title] %></strong></p>
+              <p><%= reservation_user.starts_at.strftime("%F") %> / <%= reservation_user.ends_at.strftime("%F") %></p>
             </div>
-            <div class="price-card">
-              <p><%= reservation_user.bike[:price_per_day] %> €/day</p>
-            </div>
-            <div class="user-bike-card">
-              <h6>Owner:</h6>
-              <% bike_id = reservation_user.bike_id %>
-              <p><% user_id = Bike.find(bike_id).user_id %></p>
-              <p><%= User.find(user_id).email %></p>
-            </div>
-            <div class="date-card">
-              <p><%= reservation_user.starts_at.strftime("%F") %></p>
-              <p><%= reservation_user.ends_at.strftime("%F") %></p>
+            <div class="status-and-price-card">
+              <% if reservation_user.validated %>
+                <p class="status accepted">Accepted</p>
+              <% elsif reservation_user.validated == false %>
+                <p class="status declined">Declined</p>
+              <% else %>
+                <p class="status pending">Pending</p>
+              <% end %>
+              <p><%= (reservation_user.ends_at - reservation_user.starts_at) / 60000 * reservation_user.bike[:price_per_day] %> €</p>
             </div>
           </div>
         <% end %>
