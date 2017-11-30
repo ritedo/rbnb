@@ -1,5 +1,7 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params[:address] == "" || params[:address] == nil
       @bikes = Bike.where.not(latitude: nil, longitude: nil)
