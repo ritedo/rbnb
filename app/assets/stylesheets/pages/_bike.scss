@@ -1,20 +1,21 @@
-.bike-container {
-  margin: 20px
-}
-
-.photo-reservation {
+.container-reserv {
   display: flex;
-  align-items: center;
-  padding: 20px;
 }
 
-.bike-photo {
-}
 
 .reservation-form {
   min-width: 100px;
   padding: 20px;
+  background-color: #FFFFFF;
+  height: calc(100vh - 70px);
 }
+
 .btn.btn-primary {
   min-width: 200px;
+}
+
+.loc-price {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid gray;
 }

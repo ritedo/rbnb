@@ -3,13 +3,11 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:address] == "" || params[:address] == nil
-      @bikes = Bike.where.not(latitude: nil, longitude: nil)
+    if params[:address].present?
+      @bikes = Bike.near(params[:address], 2)
     else
       @bikes = Bike.where.not(latitude: nil, longitude: nil)
     end
-    # @bikes = Flat.where.not(latitude: nil, longitude: nil)
-
     @markers = @bikes.map do |bike|
       {
         lat: bike.latitude,
@@ -19,12 +17,15 @@ class BikesController < ApplicationController
     end
   end
 
-  def search
-    @bikes = Bike.where(params[:address])
-    redirect_to bikes_path
-  end
-
   def show
+    bike = Bike.find(params[:id])
+
+    @markers = [{
+      lat: bike.latitude,
+      lng: bike.longitude,
+      # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+    }]
+
     @reservation = Reservation.new
   end
 
