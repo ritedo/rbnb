@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129101910) do
+ActiveRecord::Schema.define(version: 20171130101942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20171129101910) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "category"
+    t.string "size"
+    t.boolean "bell", default: false
+    t.boolean "lights", default: false
+    t.boolean "pump", default: false
+    t.boolean "child_seat", default: false
+    t.boolean "padlock", default: false
+    t.boolean "helmet", default: false
+    t.boolean "basket", default: false
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
