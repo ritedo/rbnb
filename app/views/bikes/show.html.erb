@@ -1,21 +1,45 @@
+
 <div class="container">
-  <h1 align="center">Rent a bike!</h1>
-  <div class="photo-reservation">
-    <%= cl_image_tag @bike.photo, height: 300, width: 400, crop: :fill, class: "bike-photo" %>
+  <div class="container-reserv">
+
     <div class="reservation-form">
-      <h3><%= @bike.title %></h3>
-      <h4>Price per day:</h4>
-      <p><%= @bike.price_per_day %>€</p>
+      <div class="loc-price">
+        <p><%= @bike.price_per_day %> €</p>
+        <p>/ DAY</p>
+      </div>
       <%= simple_form_for [@bike, @reservation] do |f| %>
         <%= f.input :starts_at, as: :string, required: false, input_html: { class: "datepicker" } %>
         <%= f.input :ends_at, as: :string, required: false, input_html: { class: "datepicker" } %>
         <%= f.submit "Add a reservation!", class: "btn btn-primary" %>
       <% end %>
     </div>
-  </div>
 
-  <div class="bike-description">
-    <h3>Description:</h3>
-    <p><%= @bike.description %> </p>
+    <div class="location">
+      <div class="location-header">
+        <div class="photo-reservation">
+          <%= cl_image_tag @bike.photo, height: 300, width: 400, crop: :fill, class: "bike-photo" %>
+        </div>
+        <div class="location-header-infos">
+          <p><%= @bike.title %></p>
+          <p><%= @bike.address %></p>
+        </div>
+      </div>
+
+      <div class="location-block location-infos">
+        <div class="location-infos-desc">
+        <p><%= @bike.description %></p>
+        </div>
+        <div class="location-infos-equip">
+          <p><%= @bike.description %></p>
+        </div>
+        <div class="location-infos-price">
+          <p>Price a day: <%= @bike.price_per_day %></p>
+        </div>
+        <div class="location-infos-owner">
+          <p><%= User.find(@bike.user_id).email %></p>
+        </div>
+      </div>
+      <div class="location-map" id="map" data-markers="<%= @markers.to_json %>">
+    </div>
   </div>
 </div>
