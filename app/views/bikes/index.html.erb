@@ -1,6 +1,13 @@
-<h1>Choose your bike!</h1>
 <div class="index-container">
   <div class="card-container">
+    <%= form_tag bikes_path, class: "form-stuff", method: :get do %>
+      <%= text_field_tag :address,
+        params[:address],
+        class: "form-control input-lg",
+        placeholder: "Enter the address where you want to pickup your bike",
+        id: "bike_address"
+      %>
+    <% end %>
     <div class="row">
       <% @bikes.each do |bike| %>
         <div class="col-xs-12 col-sm-4">
