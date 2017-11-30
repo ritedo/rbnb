@@ -1,17 +1,12 @@
 <div class="index-container">
   <div class="card-container">
-    <%= form_tag bikes_path, class: "form-stuff", method: :get do %>
-      <%= text_field_tag :address,
-        params[:address],
-        class: "form-control input-lg",
-        placeholder: "Enter the address where you want to pickup your bike",
-        id: "bike_address"
-      %>
-    <% end %>
+    <div class="class index-white-box">
+      <p>You will see a filters here tommorrow.</p>
+    </div>
     <div class="row">
       <% @bikes.each do |bike| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('<%= cl_image_path bike.photo, height: 300, width: 400, crop: :fill %>')">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('<%= cl_image_path bike.photo, height: 300, width: 400, crop: :fill %>')">
           <div class="card-category"><%= bike.address %></div>
           <div class="card-price"><p><%= bike.price_per_day %> €</p></div>
           <div class="card-description">
@@ -19,8 +14,8 @@
           </div>
           <%= cl_image_tag bike.user.avatar.url, class: "card-user" %>
           <%= link_to "", bike_path(bike), class: "card-link" %>
-          </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
