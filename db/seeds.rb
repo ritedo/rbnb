@@ -23,13 +23,17 @@ joffrey.save!
 david.save!
 marguerite.save!
 
+desc1 = "Bonjour, Je loue mon vélo Peugeot à Paris. Je mesure 1m72, convient difficilement à plus grand que moi mais facilement à plus petit :) Elle s'appelle Joséphine et a la selle rouge. Elle ne sort pas sans son cadenas U sécurisé à attacher avec la roue, le cadre et un poteau fixe ;) Je suis disponible pour vous donner plus d'informations, n'hésitez pas à me contacter. Belle journée !"
+desc2 = "Goûtez à la qualité et au confort hollandais, pour une balade mémorable en toute tranquillité. Avec Holland Bikes, vous faites le choix : D'un vélo ultra confort et sûr , de grandes marques hollandaises expertes dans le vélo, ayant plus de 100 ans d'existence, telles que Gazelle ou Batavus et des vélos récents, renouvelés très fréquemment."
+desc3 = "Vélo à assistance électrique de type boitier pédalier avec batterie lithium - Boitier vitesse Nuvinci - frein à disque avant et arrière - Capacité de charge 140Kg - Dimensions: long 2650mm x large850mm x haut1045mM - Dimension caisson: long750mm x large560mm x haut560mm SOUPLE"
+
 puts "creating bikes"
-bike1 = Bike.new(title: "Nice racing bike", description: "Very fast and light", price_per_day: 15, address: "18 rue rousselet paris")
-bike2 = Bike.new(title: "Nice city bike", description: "Very good sitting, rented with a baby sit. Perfect for an adult with a young child", price_per_day: 20, address: "10 rue de la grand aux belles paris")
-bike3 = Bike.new(title: "Delivery bike", description: "With a delivery box", price_per_day: 12, address: "14 rue crespin du gast paris")
-bike4 = Bike.new(title: "Racing bike", description: "Very fast and light", price_per_day: 25, address: "16 villa gaudelet paris")
-bike5 = Bike.new(title: "Very Nice mid-racing bike", description: "Very fast and light", price_per_day: 25, address: "152 avenue jean jeaurès paris")
-bike6 = Bike.new(title: "Quadridem", description: "Perfect for travelling with friends. Four sits.", price_per_day: 45, address: "18 rue rousselet paris")
+bike1 = Bike.new(title: "Nice racing bike", description: desc1, price_per_day: 15, address: "18 rue rousselet paris", bell: true, helmet: true, lights: true, padlock: true)
+bike2 = Bike.new(title: "Nice city bike", description: desc2, price_per_day: 20, address: "10 rue de la grand aux belles paris", pump: true, lights: true, child_seat: true, padlock: true, basket: true)
+bike3 = Bike.new(title: "Delivery bike", description: desc3, price_per_day: 12, address: "14 rue crespin du gast paris", lights: true, padlock: true)
+bike4 = Bike.new(title: "Racing bike", description: "Very fast and light. Don't hesitate to contact me", price_per_day: 25, address: "16 villa gaudelet paris", pump: true, lights: true)
+bike5 = Bike.new(title: "Very Nice mid-racing bike", description: "Very fast and light", price_per_day: 25, address: "152 avenue jean jeaurès paris", pump: true)
+bike6 = Bike.new(title: "Quadridem", description: "Perfect for travelling with friends. Four sits.", price_per_day: 45, address: "18 rue rousselet paris", lights: true, padlock: true)
 
 bike1.remote_photo_url = "https://www.bricklanebikes.co.uk/content/images/thumbs/0030350_6ku-fixie-single-speed-bike-beach-bum_1200.jpeg"
 bike2.remote_photo_url = "https://www.placedelaloc.com/sites/default/files/styles/annonce_detail/public/annonces/2015/09/14/12982/location-velo_vtc_gitane_homme_avec_siege_bebe-1999771491.jpg?itok=fO2Qp8MZ"
