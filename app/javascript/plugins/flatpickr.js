@@ -2,8 +2,12 @@ import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
-flatpickr("#range_start", {
+flatpickr(".datepicker", {
   altInput: true,
-  plugins: [new rangePlugin({ input: "#range_end"})]
+  enableTime: true,
+  minDate: "today",
+  time_24hr: true,
+  locale: {
+    "firstDayOfWeek": 1 // start week on Monday
+  }
 })
-flatpickr(".datepicker", {})
