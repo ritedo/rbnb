@@ -1,8 +1,9 @@
-<h1>My bikes</h1>
-<p class="my-bikes-p">Congratulations ! You already have <%= @bikes.count %> bike(s) registered on Click & Bike !</p>
-<div class="container">
-  <div class="row">
-    <% @bikes.each do |bike| %>
+<h1 class="spacecenter spaceautour">My bikes</h1>
+<p class="my-bikes-p spaceautour">Congratulations ! You already have <%= @bikes.count %> bike(s) registered on Click and Bike !</p>
+<div class="whitebox">
+  <div class="container">
+    <div class="row">
+      <% @bikes.each do |bike| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card-shadow-mybikes">
           <div class="card card-with-shadow" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path bike.photo, height: 300, width: 400, crop: :fill %>')">
@@ -16,14 +17,17 @@
             <ul class="list-inline update-delete">
               <li><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_bike_path(bike)%></li>
               <li><%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, bike_path(bike),
-                method: :delete,
-                data: { confirm: "Are you sure?" }%>
-              </li>
-            </ul>
-          </div>
+              method: :delete,
+              data: { confirm: "Are you sure?" }%>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
-<%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add a bike !'.html_safe, new_bike_path, class: "btn" %>
+  <div class="spacecenter">
+  <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add a bike !'.html_safe, new_bike_path, class: "btn btn-primary spaceautour" %>
+  </div>
+</div>
 </div>

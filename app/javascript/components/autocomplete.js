@@ -1,6 +1,7 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
     var bikeAddress = document.getElementById('bike_address');
+    var navBikeAddress = document.getElementById('navbar_bike_address');
 
     if (bikeAddress) {
       var autocomplete = new google.maps.places.Autocomplete(bikeAddress, { types: [ 'geocode' ] });
@@ -9,6 +10,10 @@ function autocomplete() {
           e.preventDefault(); // Do not submit the form on Enter.
         }
       });
+    }
+
+    if (navBikeAddress) {
+      var autocomplete = new google.maps.places.Autocomplete(navBikeAddress, { types: [ 'geocode' ] });
     }
   });
 }
