@@ -19,7 +19,7 @@ class BikesController < ApplicationController
 
   def show
     bike = Bike.find(params[:id])
-
+    @categories = ["bell", "helmet"]
     @markers = [{
       lat: bike.latitude,
       lng: bike.longitude,
