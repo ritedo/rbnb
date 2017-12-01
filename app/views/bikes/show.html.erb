@@ -1,46 +1,66 @@
 <div class="container">
   <div class="container-reserv">
+    <div class="col-md-8">
+      <div class="location">
+        <div class="location-header">
+          <div class="photo-reservation">
+            <%= cl_image_tag @bike.photo, crop: :fill, class: "bike-photo" %>
+          </div>
+          <div class="location-header-infos">
+            <h4><%= @bike.title %></h4>
+            <p><%= @bike.address %></p>
+          </div>
+        </div>
 
-    <div class="location">
-      <div class="location-header">
-        <div class="photo-reservation">
-          <%= cl_image_tag @bike.photo, crop: :fill, class: "bike-photo" %>
-        </div>
-        <div class="location-header-infos">
-          <h4><%= @bike.title %></h4>
-          <p><%= @bike.address %></p>
-        </div>
-      </div>
+        <div class="location-infos">
+          <div class="location-infos-desc">
+            <h4>About this bike</h4>
+            <p><%= @bike.description %></p>
+          </div>
+          <hr class="hr">
+          <div class="location-infos-equip">
+            <h4>Equipments</h4>
+              <div class="all-equipment">
+                <div class="first-equipment">
 
-      <div class="location-infos">
-        <div class="location-infos-desc">
-          <h4>About this bike</h4>
-          <p><%= @bike.description %></p>
+                  <% @equipments.each do |equipment| %>
+                  <% if @bike.send(equipment[0]) %>
+                    <div class="equipment">
+                  <% else %>
+                    <div class="equipment line-throught">
+                  <% end %>
+                      <%= image_tag equipment[1] %>
+                      <p><%= equipment[0].to_s.capitalize %></p>
+                    </div>
+                  <% end %>
+
+                </div>
+              </div>
+          </div>
+          <hr class="hr">
+          <div class="location-infos-price">
+            <h4>Price</h4>
+            <p>Price a day: <%= @bike.price_per_day %></p>
+          </div>
+          <hr class="hr">
+          <div class="location-infos-owner">
+            <h4>Bike owner information</h4>
+            <p><%= User.find(@bike.user_id).email %></p>
+          </div>
         </div>
-        <div class="location-infos-equip">
-          <h4>Equipments</h4>
-          <% if @bike.bell %>
+        <div class="location-map" id="map" data-markers="<%= @markers.to_json %>"></div>
+        <div id="reviews">
+        <h3><%= pluralize @bike.reviews.size, "review" %></h3>
+          <% if @bike.reviews.blank? %>
+            Be the first to leave a review for <%= @bike.title %>
           <% else %>
-            <p><i class="fa fa-bell line-throught" aria-hidden="true"> Bell</i></p>
+            <% @bike.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
+            <% end %>
           <% end %>
-
-          <% @categories.each do |category| %>
-            <p><%= @bike.send(category.to_sym) ? category : "no #{category}" %></p>
-          <% end %>
-
-        </div>
-        <div class="location-infos-price">
-          <h4>Price</h4>
-          <p>Price a day: <%= @bike.price_per_day %></p>
-        </div>
-        <div class="location-infos-owner">
-          <h4>Bike owner information</h4>
-          <p><%= User.find(@bike.user_id).email %></p>
         </div>
       </div>
-      <div class="location-map" id="map" data-markers="<%= @markers.to_json %>"></div>
     </div>
-
     <div class="reservation-form">
       <div class="loc-price" id="calcul-days" data-price="<%= @bike.price_per_day %>">
         <h6><%= @bike.price_per_day %> €</h6>
@@ -51,6 +71,7 @@
         <%= f.input :ends_at, as: :string, required: false, label: false, input_html: { class: "placeholder-form datepicker ends_at" }, placeholder: "Ends at" %>
         <%= f.submit "Book now", class: "btn btn-primary btn-full-width", id: "submit_booking" %>
       <% end %>
+      <%= render 'reviews/formreview', bike: @bike, review: @review %>
     </div>
   </div>
 </div>
