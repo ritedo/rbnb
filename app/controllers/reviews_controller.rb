@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
         format.html { redirect_to bike_path(@bike) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
-      redirect_to bike_path(@bike)
     else
+      @equipments = Bike::EQUIPMENTS
       respond_to do |format|
         format.html { render 'bikes/show' }
         format.js  # <-- idem
@@ -22,6 +22,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :rating)
   end
 end

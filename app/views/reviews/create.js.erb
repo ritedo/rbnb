@@ -1,16 +1,11 @@
-const newReviewForm = document.getElementById('new_review');
+var newReviewForm = document.getElementById('new_review');
 <% if @review.errors.any? %>
   newReviewForm.outerHTML = "<%= j render 'reviews/formreview', bike: @bike, review: @review %>";
 <% else %>
   newReviewForm.outerHTML = "<%= j render 'reviews/formreview', bike: @bike, review: Review.new %>";
-  if (reviews === undefined){
-    const reviews = document.getElementById('reviews');
-  }
+  var reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML("beforeend", "<%= j render 'reviews/show', review: @review %>");
-  if (typeof reviewContent === "undefined") {
-    const counter = document.querySelector('#review')
-  }
-  reviewContent.value = '';
+  var counter = document.querySelector('#review')
 <% end %>
 
 

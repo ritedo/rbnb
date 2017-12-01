@@ -1,2 +1,8 @@
-<p><%= review.rating %></p>
+
+<% for i in 1..review.rating %>
+  <%=image_tag 'star.png' %>
+<% end %>
+<% for i in 1..(5-review.rating) %>
+  <%=image_tag 'starblanc.png' %>
+<% end %>
 <p><%= review.content %></p>

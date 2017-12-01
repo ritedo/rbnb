@@ -30,15 +30,7 @@ class BikesController < ApplicationController
   end
 
   def show
-    @equipments = {
-      "bell": "bell.png",
-      "lights": "",
-      "pump": "" ,
-      "child_seat": "",
-      "padlock": "",
-      "helmet": "",
-      "basket":"" ,
-    }
+    @equipments = Bike::EQUIPMENTS
     bike = Bike.find(params[:id])
     @markers = [{
       lat: bike.latitude,
