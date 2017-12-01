@@ -1,0 +1,7 @@
+// suppression des anciennes cartes
+var cards = document.querySelector("#all-cards")
+cards.innerHTML = ""
+
+<% @bikes.each do |bike| %>
+  cards.insertAdjacentHTML("beforeend", "<%= j render 'bikes/bike_card', bike: bike %>")
+<% end %>

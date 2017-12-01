@@ -5,6 +5,13 @@ class BikesController < ApplicationController
 
   def index
     @bikes = Bike.all
+    @address = params[:address]
+
+    if @address.present?
+      @bikes = @bikes.near(@address, 2)
+    else
+      @bikes = @bikes.where.not(latitude: nil, longitude: nil)
+    end
 
     EQUIPMENT.each do |equipment|
       if params[:bike]
@@ -14,18 +21,16 @@ class BikesController < ApplicationController
       end
     end
 
-    if params[:address].present?
-      @bikes = @bikes.near(params[:address], 2)
-    else
-      @bikes = @bikes.where.not(latitude: nil, longitude: nil)
-    end
-
     @markers = @bikes.map do |bike|
       {
         lat: bike.latitude,
         lng: bike.longitude#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

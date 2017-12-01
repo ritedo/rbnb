@@ -52,11 +52,11 @@
             <div class="card-details">
               <p><%= reservation.starts_at.strftime("%e/%m/%y") %> / <%= reservation.ends_at.strftime("%e/%m/%y") %></p>
             </div>
-            <p class="price-card"><strong><%=  (reservation.ends_at - reservation.starts_at) / 60000 * reservation.bike.price_per_day %> €</strong></p>
+            <p class="price-card"><strong><%= ((reservation.ends_at - reservation.starts_at) / 60000).round * reservation.bike.price_per_day %> €</strong></p>
             <div class="status-card">
               <% if reservation.validated == nil %>
-                <%= link_to 'accept <i class="fa fa-check" aria-hidden="true"></i>'.html_safe, accept_booking_path(reservation), method: :patch, id: "accept-reservation" %>
-                <%= link_to 'decline <i class="fa fa-ban" aria-hidden="true"></i>'.html_safe, decline_booking_path(reservation), method: :patch, id: "decline-reservation" %>
+                <%= link_to '<i class="fa fa-check" aria-hidden="true"></i>'.html_safe, accept_booking_path(reservation), method: :patch, id: "accept-reservation" %>
+                <%= link_to '<i class="fa fa-ban" aria-hidden="true"></i>'.html_safe, decline_booking_path(reservation), method: :patch, id: "decline-reservation" %>
               <% elsif reservation.validated == true %>
                 <p class="status accepted answered-request" >Accepted</p>
               <% else %>
@@ -75,7 +75,7 @@
               <p><%= reservation_user.starts_at.strftime("%e/%m/%y") %> / <%= reservation_user.ends_at.strftime("%e/%m/%y") %></p>
               <p><%= reservation_user.bike.address %></p>
             </div>
-            <p class="price-card"><strong><%= (reservation_user.ends_at - reservation_user.starts_at) / 60000 * reservation_user.bike[:price_per_day] %> €</strong></p>
+            <p class="price-card"><strong><%= ((reservation_user.ends_at - reservation_user.starts_at) / 60000).round * reservation_user.bike[:price_per_day] %> €</strong></p>
             <div class="status-card">
               <% if reservation_user.validated %>
                 <p class="status accepted">Accepted</p>

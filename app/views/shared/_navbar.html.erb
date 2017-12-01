@@ -8,8 +8,13 @@
   <%= form_tag bikes_path, class: "navbar-search", method: :get do %>
   <div id="search-bar">
     <i class="fa fa-search" aria-hidden="true"></i>
+    <% if (params[:address] == "" || params[:address].nil?) && params[:bike] %>
+      <% address_value = params[:bike]["address"] %>
+    <% else %>
+      <% address_value = params[:address] %>
+    <% end %>
     <%= text_field_tag :address,
-    params[:address],
+    address_value,
     class: "form-control input-lg",
       placeholder: "Find a bike",
       id: "navbar_bike_address" %>
