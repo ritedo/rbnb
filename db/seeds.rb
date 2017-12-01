@@ -34,6 +34,10 @@ bike3 = Bike.new(title: "Delivery bike", description: desc3, price_per_day: 12, 
 bike4 = Bike.new(title: "Racing bike", description: "Very fast and light. Don't hesitate to contact me", price_per_day: 25, address: "16 villa gaudelet paris", pump: true, lights: true)
 bike5 = Bike.new(title: "Very Nice mid-racing bike", description: "Very fast and light", price_per_day: 25, address: "152 avenue jean jeaurès paris", pump: true)
 bike6 = Bike.new(title: "Quadridem", description: "Perfect for travelling with friends. Four sits.", price_per_day: 45, address: "18 rue rousselet paris", lights: true, padlock: true)
+bike7 = Bike.new(title: "Racing bike", description: "Very fast and light. Don't hesitate to contact me", price_per_day: 19, address: "114 rue Oberkampf paris", pump: true)
+bike8 = Bike.new(title: "Very Nice mid-racing bike", description: "Very fast and light", price_per_day: 25, address: "102 boulevard de belleville paris", pump: true)
+bike9 = Bike.new(title: "Quadridem", description: "Perfect for travelling with friends. Four sits.", price_per_day: 45, address: "1 Avenue de la République paris", lights: true, padlock: true)
+bike10 = Bike.new(title: "Delivery bike", description: desc3, price_per_day: 12, address: "37 Rue du faubourg du temple paris", lights: true, padlock: true)
 
 bike1.remote_photo_url = "https://www.bricklanebikes.co.uk/content/images/thumbs/0030350_6ku-fixie-single-speed-bike-beach-bum_1200.jpeg"
 bike2.remote_photo_url = "https://www.placedelaloc.com/sites/default/files/styles/annonce_detail/public/annonces/2015/09/14/12982/location-velo_vtc_gitane_homme_avec_siege_bebe-1999771491.jpg?itok=fO2Qp8MZ"
@@ -41,6 +45,10 @@ bike3.remote_photo_url = "https://www.flyingdutchman.bike/wp-content/uploads/201
 bike4.remote_photo_url = "https://s-media-cache-ak0.pinimg.com/originals/d0/51/cb/d051cbef7b8117be58fabbd96611acb2.jpg"
 bike5.remote_photo_url = "http://www.vieuxbicloo.com/wp-content/uploads/2012/05/179115.jpg"
 bike6.remote_photo_url = "https://i.pinimg.com/564x/df/a2/00/dfa2003c84eb31911e64b7d780884834.jpg"
+bike7.remote_photo_url = "https://dev-weelngo.s3.amazonaws.com/stuff/591879c7ebecc4722a8b4569/591879ebebecc4722a8b456a-normal.JPG"
+bike8.remote_photo_url = "https://dev-weelngo.s3.amazonaws.com/stuff/590c6ed3ebecc4425d8b4569/59280637ebecc47f0e8b4569-normal.JPG"
+bike9.remote_photo_url = "https://dev-weelngo.s3.amazonaws.com/stuff/58944e88ebecc4b0138b4572/589b3234ebecc436108b4569-normal.JPG"
+bike10.remote_photo_url = "https://s-media-cache-ak0.pinimg.com/originals/d0/51/cb/d051cbef7b8117be58fabbd96611acb2.jpg"
 
 bike1.user = donatien
 bike2.user = victor
@@ -48,6 +56,10 @@ bike3.user = joffrey
 bike4.user = david
 bike5.user = marguerite
 bike6.user = donatien
+bike7.user = david
+bike8.user = marguerite
+bike9.user = donatien
+bike10.user = joffrey
 
 bike1.save!
 bike2.save!
@@ -55,19 +67,32 @@ bike3.save!
 bike4.save!
 bike5.save!
 bike6.save!
+bike7.save!
+bike8.save!
+bike9.save!
+bike10.save!
 
 puts "creating reservations"
 reservation1 = Reservation.new(starts_at: DateTime.new(2017,12,2), ends_at: DateTime.new(2017,12,4))
 reservation2 = Reservation.new(starts_at: DateTime.new(2017,12,5), ends_at: DateTime.new(2017,12,7))
 reservation3 = Reservation.new(starts_at: DateTime.new(2017,12,6), ends_at: DateTime.new(2017,12,10))
+reservation4 = Reservation.new(starts_at: DateTime.new(2017,12,2), ends_at: DateTime.new(2017,12,4))
+reservation5 = Reservation.new(starts_at: DateTime.new(2017,12,5), ends_at: DateTime.new(2017,12,7))
+reservation6 = Reservation.new(starts_at: DateTime.new(2017,12,6), ends_at: DateTime.new(2017,12,10))
 
 reservation1.user = donatien
 reservation2.user = victor
 reservation3.user = marguerite
+reservation4.user = david
+reservation5.user = joffrey
+reservation6.user = victor
 
 reservation1.bike = bike4
 reservation2.bike = bike5
 reservation3.bike = bike6
+reservation4.bike = bike10
+reservation5.bike = bike8
+reservation6.bike = bike6
 
 reservation1.save!
 reservation2.save!
