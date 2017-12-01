@@ -1,7 +1,33 @@
 <div class="index-container">
   <div class="card-container">
-    <div class="whitebox">
-      <p>You will see a filters here tommorrow.</p>
+    <div class="class index-white-box">
+
+      <div class="form-post">
+        <form action="/bikes" class="form-stuff">
+          <div class="form-group">
+            <!-- <label class="control-label check_boxes optional">Equipment</label> -->
+            <input type="hidden" name="post[category_ids][]" value="">
+            <div class="category-choices">
+              <input type="checkbox" class="hidden" name="bike[bell]" id="bell">
+              <label for="bell" class="category-choice">Bell <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[lights]" id="lights">
+              <label for="lights" class="category-choice">Lights <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[pump]" id="pump">
+              <label for="pump" class="category-choice">Pump <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[child_seat]" id="child_seat">
+              <label for="child_seat" class="category-choice">Child seat <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[padlock]" id="padlock">
+              <label for="padlock" class="category-choice">Padlock <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[helmet]" id="helmet">
+              <label for="helmet" class="category-choice">Helmet <i class="fa fa-check"></i></label>
+              <input type="checkbox" class="hidden" name="bike[basket]" id="basket">
+              <label for="basket" class="category-choice">Basket <i class="fa fa-check"></i></label>
+              <div class="category-choice-blank"></div>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Save"></input>
+        </form>
+      </div>
     </div>
     <div class="row">
       <% @bikes.each do |bike| %>

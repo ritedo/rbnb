@@ -1,13 +1,25 @@
+EQUIPMENT = ["bell", "lights", "pump", "child_seat", "padlock", "helmet", "basket"]
 class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:address].present?
-      @bikes = Bike.near(params[:address], 2)
-    else
-      @bikes = Bike.where.not(latitude: nil, longitude: nil)
+    @bikes = Bike.all
+
+    EQUIPMENT.each do |equipment|
+      if params[:bike]
+        if params[:bike][equipment].present?
+          @bikes = @bikes.where(equipment.to_sym => true)
+        end
+      end
     end
+
+    if params[:address].present?
+      @bikes = @bikes.near(params[:address], 2)
+    else
+      @bikes = @bikes.where.not(latitude: nil, longitude: nil)
+    end
+
     @markers = @bikes.map do |bike|
       {
         lat: bike.latitude,
@@ -80,6 +92,10 @@ class BikesController < ApplicationController
   def bike_params
     params.require(:bike).permit(:title, :description, :price_per_day, :address, :photo, :photo_cache, :bell, :lights, :pump, :child_seat, :padlock, :helmet, :basket)
   end
+
+  # def filtering_params
+  #   params.require(:bike).permit(:bell, :lights, :pump, :child_seat, :padlock, :helmet, :basket)
+  # end
 
   def set_bike
     @bike = Bike.find(params[:id])
