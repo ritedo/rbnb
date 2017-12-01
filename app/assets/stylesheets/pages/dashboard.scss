@@ -1,11 +1,13 @@
 .container-dashboard {
   display: flex;
   margin: 10px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 70px);
 }
 //left
 .profil-dashboard {
+  height: calc(100vh - 70px);
   flex: 0 0 200px;
+  top: 0 !important;
   padding: 10px;
   align-items: center;
   text-align: center;
@@ -17,7 +19,9 @@
     font-size: 20px;
   }
 }
-
+// .tab-content {
+//   overflow: scroll;
+// }
 .user-info {
   p {
     margin-top: 10px;
@@ -42,6 +46,7 @@
 // right
 .full-tabs {
   flex: 1 0 auto;
+  overflow: scroll;
   background: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
