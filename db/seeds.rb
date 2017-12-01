@@ -5,11 +5,11 @@ User.destroy_all
 Reservation.destroy_all
 
 puts "creating users"
-donatien = User.create(email: "donatien@hotmail.fr", password: "password")
-victor = User.create(email: "victor@hotmail.fr", password: "password")
-joffrey = User.create(email: "joffrey@hotmail.fr", password: "password")
-david = User.create(email: "david@hotmail.fr", password: "password")
-marguerite = User.create(email: "marguerite@hotmail.fr", password: "password")
+donatien = User.create(first_name: "donatien", email: "donatien@hotmail.fr", password: "password")
+victor = User.create(first_name: "victor", email: "victor@hotmail.fr", password: "password")
+joffrey = User.create(first_name: "joffrey", email: "joffrey@hotmail.fr", password: "password")
+david = User.create(first_name: "david", email: "david@hotmail.fr", password: "password")
+marguerite = User.create(first_name: "marguerite", email: "marguerite@hotmail.fr", password: "password")
 
 donatien.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/fquca4dej4dklpyq1cva.jpg"
 victor.remote_avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/e7hbgzamn1jrhuonn7yr.jpg"
