@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :bikes, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :reservations_as_owner, through: :bikes, source: :reservations
   # has_many :bikes_as_client, class_name: 'Bike', through: :reservations
   validates :email, presence: true
   validates :email, uniqueness: true

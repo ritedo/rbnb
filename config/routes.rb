@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/dashboard'
+  get 'dashboard', to: "users#dashboard"
+
+  patch  "reservations/:id/decline", to: "reservations#decline", as: :decline_booking
+  patch  "reservations/:id/accept", to: "reservations#accept", as: :accept_booking
 
   devise_for :users
   root to: 'pages#home'
@@ -10,5 +13,4 @@ Rails.application.routes.draw do
       get 'mybikes', to: "bikes#mybikes", as: :mybikes
     end
   end
-  get 'users/:id/dashboard', to: "users#dashboard", as: :dashboard
 end
