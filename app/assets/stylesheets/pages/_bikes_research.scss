@@ -73,7 +73,7 @@
   flex: 1 0 auto;
   margin:10px;
 }
-#map {
+.map-index {
   flex: 0 0 450px;
   height: calc(100vh - 70px);
   position: sticky !important; /* !important to override Gmaps inline CSS */

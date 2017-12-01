@@ -2,44 +2,56 @@
 <div class="container">
   <div class="container-reserv">
 
-    <div class="reservation-form">
-      <div class="loc-price">
-        <p><%= @bike.price_per_day %> €</p>
-        <p>/ DAY</p>
-      </div>
-      <%= simple_form_for [@bike, @reservation] do |f| %>
-        <%= f.input :starts_at, as: :string, required: false, input_html: { class: "datepicker" } %>
-        <%= f.input :ends_at, as: :string, required: false, input_html: { class: "datepicker" } %>
-        <%= f.submit "Add a reservation!", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-
     <div class="location">
       <div class="location-header">
         <div class="photo-reservation">
-          <%= cl_image_tag @bike.photo, height: 300, width: 400, crop: :fill, class: "bike-photo" %>
+          <%= cl_image_tag @bike.photo, crop: :fill, class: "bike-photo" %>
         </div>
         <div class="location-header-infos">
-          <p><%= @bike.title %></p>
+          <h4><%= @bike.title %></h4>
           <p><%= @bike.address %></p>
         </div>
       </div>
 
-      <div class="location-block location-infos">
+      <div class="location-infos">
         <div class="location-infos-desc">
-        <p><%= @bike.description %></p>
-        </div>
-        <div class="location-infos-equip">
+          <h4>About this bike</h4>
           <p><%= @bike.description %></p>
         </div>
+        <div class="location-infos-equip">
+          <h4>Equipments</h4>
+          <% if @bike.bell %>
+          <% else %>
+            <p><i class="fa fa-bell line-throught" aria-hidden="true"> Bell</i></p>
+          <% end %>
+
+          <% @categories.each do |category| %>
+            <p><%= @bike.send(category.to_sym) ? category : "no #{category}" %></p>
+          <% end %>
+
+        </div>
         <div class="location-infos-price">
+          <h4>Price</h4>
           <p>Price a day: <%= @bike.price_per_day %></p>
         </div>
         <div class="location-infos-owner">
+          <h4>Bike owner information</h4>
           <p><%= User.find(@bike.user_id).email %></p>
         </div>
       </div>
-      <div class="location-map" id="map" data-markers="<%= @markers.to_json %>">
+      <div class="location-map" id="map" data-markers="<%= @markers.to_json %>"></div>
+    </div>
+
+    <div class="reservation-form">
+      <div class="loc-price" id="calcul-days" data-price="<%= @bike.price_per_day %>">
+        <h6><%= @bike.price_per_day %> €</h6>
+        <p>/ DAY</p>
+      </div>
+      <%= simple_form_for [@bike, @reservation] do |f| %>
+        <%= f.input :starts_at, as: :string, required: false, label: false, input_html: { class: "datepicker starts_at placeholder-form" }, placeholder: "Starts at" %>
+        <%= f.input :ends_at, as: :string, required: false, label: false, input_html: { class: "placeholder-form datepicker ends_at" }, placeholder: "Ends at" %>
+        <%= f.submit "Book now", class: "btn btn-primary btn-full-width", id: "submit_booking" %>
+      <% end %>
     </div>
   </div>
 </div>
