@@ -5,7 +5,8 @@ var newReviewForm = document.getElementById('new_review');
   newReviewForm.outerHTML = "<%= j render 'reviews/formreview', bike: @bike, review: Review.new %>";
   var reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML("beforeend", "<%= j render 'reviews/show', review: @review %>");
-  var counter = document.querySelector('#review')
+  var counter = document.querySelector('#counter')
+  counter.innerText = '<%= pluralize @bike.reviews.size, "review" %>'
 <% end %>
 
 

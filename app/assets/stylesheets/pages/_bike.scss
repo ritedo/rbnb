@@ -11,7 +11,7 @@
   position: sticky;
   top: 10px;
   right: 0px;
-  height: 520px;
+  height: 550px;
 }
 .margin-form {
   margin-top: 20px;
@@ -22,10 +22,27 @@
   flex-wrap: wrap;
   padding: 0 20px;
 }
+.photo-reservation {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .equipment {
   margin: 0 25px;
 }
-
+.location-infos-price {
+  p {
+    text-align: center;
+    font-weight: lighter;
+  }
+}
+.location-infos-owner {
+  p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: lighter;
+  }
+}
 .location-header-infos{
   display: flex;
   justify-content: space-between;
@@ -33,12 +50,18 @@
   align-items: center;
   p {
     margin: 0;
-    font-family: lighter;
+    font-weight: lighter;
   }
 }
 #reviews {
   background-color: #FFFFFF;
   box-shadow: 2px 2px 3px rgba(20, 20, 20, 0.1);
+  padding: 0 15px;
+  padding-top: 15px;
+  p {
+    font-weight: lighter;
+    padding-bottom: 15px;
+  }
 }
 .location-infos {
   display: flex;
@@ -79,6 +102,9 @@
 
 .location-infos-desc{
   margin: 15px 0;
+  p {
+    font-weight: lighter;
+  }
 }
 .btn.btn-primary {
   min-width: 200px;
@@ -114,4 +140,19 @@
 }
 .bike-photo {
   width: 600px;
+}
+.commentaire {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px ;
+  .stars {
+    display: flex;
+    flex-direction: row;
+  }
+  .yellow {
+    color: #fdd835;
+  }
+  p {
+    font-weight: lighter;
+  }
 }
