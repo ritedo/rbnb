@@ -1,8 +1,8 @@
 <div class="">
-  <div class="row">
+  <div class="row whitebox">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="form-post">
-        <h1>Add a bike</h1>
+      <div class="@">
+        <h1 class="spacecenter spaceautour">Add a bike</h1>
         <%= simple_form_for(@bike) do |f| %>
         <div class="row">
           <div class="col-xs-6">
@@ -45,7 +45,9 @@
           <%= f.input :description, placeholder: 'This bike is a 2 years old blue racing bicycle. It is in very good state...'%>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
-          <%= f.submit "Save", class: "btn btn-primary"  %>
+          <div class="spacecenter">
+            <%= f.submit "Save", class: "btn btn-primary spaceautour" %>
+          </div>
         <% end %>
       </div>
     </div>
