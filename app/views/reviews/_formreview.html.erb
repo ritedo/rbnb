@@ -1,5 +1,5 @@
 <%= simple_form_for([ bike, review ], remote:true) do |form| %>
-  <%= form.input :rating, as: :integer %>
-  <%= form.input :content, as: :text %>
-  <%= form.button :submit %>
+  <%= form.input :rating, as: :integer,label: false, input_html: { class: "placeholder-form margin-form" }, placeholder: "Rating"  %>
+  <%= form.input :content, as: :text,label: false, input_html: { class: " placeholder-form" }, placeholder: "Content"  %>
+  <%= form.button :submit, class: "btn btn-primary btn-full-width", id: "submit_booking" %>
 <% end %>
