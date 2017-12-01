@@ -1,8 +1,11 @@
-
-<% for i in 1..review.rating %>
-  <%=image_tag 'star.png' %>
-<% end %>
-<% for i in 1..(5-review.rating) %>
-  <%=image_tag 'starblanc.png' %>
-<% end %>
-<p><%= review.content %></p>
+<div class="commentaire">
+  <p><%= review.content %></p>
+  <div class="stars">
+    <% for i in 1..review.rating %>
+      <i class="fa fa-star yellow" aria-hidden="true"></i>
+    <% end %>
+    <% for i in 1..(5-review.rating) %>
+      <i class="fa fa-star-o yellow" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>

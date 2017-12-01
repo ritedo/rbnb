@@ -36,7 +36,7 @@
           <hr class="hr">
           <div class="location-infos-price">
             <h4>Price</h4>
-            <p>Price a day: <%= @bike.price_per_day %> €</p>
+            <p >Price a day: <%= @bike.price_per_day %> €</p>
           </div>
           <hr class="hr">
           <div class="location-infos-owner">
@@ -46,9 +46,9 @@
         </div>
         <div class="location-map" id="map" style="height: 250px;" data-markers="<%= @markers.to_json %>"></div>
         <div id="reviews">
-          <h3><%= pluralize @bike.reviews.size, "review" %></h3>
-          <% if @bike.reviews.blank? %>
-            Be the first to leave a review for <%= @bike.title %>
+          <h4 id="counter"><%= pluralize @bike.reviews.size, "review" %></h4>
+           <p> <% if @bike.reviews.blank? %>
+            Be the first to leave a review for <%= @bike.title %> </p>
           <% else %>
             <% @bike.reviews.each do |review| %>
               <%= render 'reviews/show', review: review %>
@@ -67,6 +67,7 @@
         <%= f.input :ends_at, as: :string, required: false, label: false, input_html: { class: "placeholder-form datepicker ends_at" }, placeholder: "Select Date.." %>
         <%= f.submit "Book now", class: "btn btn-primary btn-full-width", id: "submit_booking" %>
       <% end %>
+      <hr class="hr">
       <%= render 'reviews/formreview', bike: @bike, review: @review %>
     </div>
   </div>
