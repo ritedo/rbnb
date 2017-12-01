@@ -67,8 +67,8 @@
         <p>/ DAY</p>
       </div>
       <%= simple_form_for [@bike, @reservation] do |f| %>
-        <%= f.input :starts_at, as: :string, required: false, label: false, input_html: { class: "datepicker starts_at placeholder-form" }, placeholder: "Starts at" %>
-        <%= f.input :ends_at, as: :string, required: false, label: false, input_html: { class: "placeholder-form datepicker ends_at" }, placeholder: "Ends at" %>
+        <%= f.input :starts_at, as: :string, required: false, label: false, input_html: { class: "datepicker starts_at placeholder-form" }, placeholder: "Select Date.." %>
+        <%= f.input :ends_at, as: :string, required: false, label: false, input_html: { class: "placeholder-form datepicker ends_at" }, placeholder: "Select Date.." %>
         <%= f.submit "Book now", class: "btn btn-primary btn-full-width", id: "submit_booking" %>
       <% end %>
       <%= render 'reviews/formreview', bike: @bike, review: @review %>
