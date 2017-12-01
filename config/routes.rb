@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     collection do
       get 'mybikes', to: "bikes#mybikes", as: :mybikes
     end
+    resources :reviews, only: :create
   end
 end

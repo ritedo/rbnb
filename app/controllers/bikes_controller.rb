@@ -18,8 +18,16 @@ class BikesController < ApplicationController
   end
 
   def show
+    @equipments = {
+      "bell": "bell.png",
+      "lights": "",
+      "pump": "" ,
+      "child_seat": "",
+      "padlock": "",
+      "helmet": "",
+      "basket":"" ,
+    }
     bike = Bike.find(params[:id])
-    @categories = ["bell", "helmet"]
     @markers = [{
       lat: bike.latitude,
       lng: bike.longitude,
@@ -27,6 +35,7 @@ class BikesController < ApplicationController
     }]
 
     @reservation = Reservation.new
+    @review = Review.new
   end
 
   def new
